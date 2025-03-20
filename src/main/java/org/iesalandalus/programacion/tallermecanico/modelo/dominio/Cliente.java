@@ -1,7 +1,4 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
-
-package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
-
 import java.util.Objects;
 
 import java.util.Objects;

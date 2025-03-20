@@ -15,17 +15,35 @@ public abstract class Trabajo {
     protected LocalDate fechaFin;
     protected int horas;
 
-    private Trabajo(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
+    protected Trabajo(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
         setCliente(cliente);
         setVehiculo(vehiculo);
         setFechaInicio(fechaInicio);
     }
 
-    private Trabajo(Trabajo trabajo) {
-
+    protected Trabajo(Trabajo trabajo) {
+        Objects.requireNonNull(trabajo, "El trabajo no puede ser nulo.");
+        cliente = new Cliente(trabajo.cliente);
+        vehiculo = trabajo.vehiculo;
+        fechaInicio = trabajo.fechaInicio;
+        fechaFin = trabajo.fechaFin;
+        horas = trabajo.horas;
     }
-    public Trabajo copiar(Trabajo trabajo) {}
-    public Trabajo get(Vehiculo vehiculo) {}
+
+    public static Trabajo copiar(Trabajo trabajo) {
+        Objects.requireNonNull(trabajo,"El trabajo no puede ser nulo");
+        Trabajo trabajoCopiado = null;
+        if (trabajoCopiado instanceof Revision revision){
+            trabajoCopiado = new Revision(revision);
+        } else if (trabajoCopiado instanceof Mecanico mecanico){
+            trabajoCopiado = new Mecanico(mecanico);
+        }
+        return trabajoCopiado;
+    }
+    public static Trabajo get(Vehiculo vehiculo) {
+        Objects.requireNonNull(vehiculo,"El vehículo no puede ser nulo");
+        return new Revision(Cliente.get(""),vehiculo,fechaInicio);
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -101,7 +119,13 @@ public abstract class Trabajo {
         this.horas += horas;
     }
 
-    public abstract float getPrecioEspecifico();
+    public float getPrecio(){
+        return getPrecioEspecifico() + getPrecioFijo();
+    }
+
+    private float getPrecioFijo(){
+        return FACTOR_DIA * getDias();
+    }
 
     private int getDias() {
         if (fechaFin == null) {
@@ -109,6 +133,8 @@ public abstract class Trabajo {
         }
         return (int) java.time.temporal.ChronoUnit.DAYS.between(fechaInicio, fechaFin);
     }
+
+    public abstract float getPrecioEspecifico();
 
     @Override
     public boolean equals(Object o) {

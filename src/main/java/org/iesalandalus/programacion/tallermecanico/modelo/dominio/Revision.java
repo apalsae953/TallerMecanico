@@ -8,44 +8,19 @@ import java.util.Objects;
 
 public class Revision extends Trabajo {
 
-    private static final float PRECIO_HORA = 30.0F;
-    private static final float PRECIO_MATERIAL = 1.5F;
-    private float precioMaterial;
+    private static final float FACTOR_HORA = 0;
 
     public Revision(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
-        setCliente(cliente);
-        setVehiculo(vehiculo);
-        setFechaInicio(fechaInicio);
+
     }
 
     public Revision(Revision revision) {
 
-        Objects.requireNonNull(revision, "La revisión no puede ser nula.");
-        this.cliente = new Cliente (revision.cliente);
-        this.vehiculo = revision.vehiculo;
-        this.fechaInicio = revision.fechaInicio;
-        this.fechaFin = revision.fechaFin;
-        this.horas = revision.horas;
-        this.precioMaterial = revision.precioMaterial;
-    }
-
-    public float getPrecioMaterial() {
-        return precioMaterial;
-    }
-
-    public void anadirPrecioMaterial(float precioMaterial) throws TallerMecanicoExcepcion {
-        if (precioMaterial <= 0) {
-            throw new IllegalArgumentException("El precio del material a añadir debe ser mayor que cero.");
-        }
-        if (estaCerrada()) {
-            throw new TallerMecanicoExcepcion("No se puede añadir precio del material, ya que la revisión está cerrada.");
-        }
-        this.precioMaterial += precioMaterial;
     }
 
     @Override
     public float getPrecioEspecifico() {
-        return horas * PRECIO_HORA + PRECIO_DIA()  + getPrecioMaterial() * PRECIO_MATERIAL;
+        return ;
     }
 
 
