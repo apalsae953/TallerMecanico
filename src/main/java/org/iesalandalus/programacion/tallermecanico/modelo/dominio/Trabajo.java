@@ -31,11 +31,11 @@ public abstract class Trabajo {
     }
 
     public static Trabajo copiar(Trabajo trabajo) {
-        Objects.requireNonNull(trabajo,"El trabajo no puede ser nulo");
+        Objects.requireNonNull(trabajo, "El trabajo no puede ser nulo");
         Trabajo trabajoCopiado = null;
-        if (trabajoCopiado instanceof Revision revision){
+        if (trabajo instanceof Revision revision) {
             trabajoCopiado = new Revision(revision);
-        } else if (trabajoCopiado instanceof Mecanico mecanico){
+        } else if (trabajo instanceof Mecanico mecanico) {
             trabajoCopiado = new Mecanico(mecanico);
         }
         return trabajoCopiado;

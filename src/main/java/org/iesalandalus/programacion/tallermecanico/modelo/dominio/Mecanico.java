@@ -8,12 +8,23 @@ public class Mecanico {
     private static final float FACTOR_PRECIO_MATERIAL = 0;
     private float precioMaterial;
 
-    public Mecanico(Cliente cliente, Vehiculo vehiculo LocalDate fechaInicio){
-
+    public Mecanico(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
+        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
+        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede ser nula.");
     }
 
-    public Mecanico(Mecanico mecanico){
+    private LocalDate fechaInicio;
 
+    public Mecanico(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
+        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
+        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede ser nula.");
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
     }
 
     public float getPrecioMaterial(){
