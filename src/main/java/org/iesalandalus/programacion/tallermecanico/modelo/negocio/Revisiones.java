@@ -90,7 +90,6 @@ public class Revisiones {
         if (revisionExistente == null) {
             throw new TallerMecanicoExcepcion("No existe ninguna revisión igual.");
         }
-        revisionExistente.anadirPrecioMaterial(precioMaterial);
         return revisionExistente;
     }
 

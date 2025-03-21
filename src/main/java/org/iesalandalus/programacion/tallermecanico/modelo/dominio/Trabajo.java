@@ -4,6 +4,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public abstract class Trabajo {
@@ -40,9 +41,10 @@ public abstract class Trabajo {
         }
         return trabajoCopiado;
     }
+
     public static Trabajo get(Vehiculo vehiculo) {
-        Objects.requireNonNull(vehiculo,"El vehículo no puede ser nulo");
-        return new Revision(Cliente.get(""),vehiculo,fechaInicio);
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo");
+        return new Revision(Cliente.get("12345678Z"), vehiculo, LocalDate.now());
     }
 
     public Cliente getCliente() {
@@ -131,7 +133,7 @@ public abstract class Trabajo {
         if (fechaFin == null) {
             return 0;
         }
-        return (int) java.time.temporal.ChronoUnit.DAYS.between(fechaInicio, fechaFin);
+        return (int) ChronoUnit.DAYS.between(fechaInicio, fechaFin);
     }
 
     public abstract float getPrecioEspecifico();

@@ -2,29 +2,21 @@ package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Mecanico {
+public class Mecanico extends Trabajo{
     private static final float FACTOR_HORA = 0;
     private static final float FACTOR_PRECIO_MATERIAL = 0;
     private float precioMaterial;
 
     public Mecanico(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
-        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
-        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
-        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede ser nula.");
+        super(cliente, vehiculo, fechaInicio);
+        precioMaterial = 0;
     }
 
-    private LocalDate fechaInicio;
 
-    public Mecanico(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio) {
-        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
-        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
-        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede ser nula.");
-        this.fechaInicio = fechaInicio;
-    }
-
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
+    public Mecanico(Mecanico mecanico) {
+        super(mecanico);
     }
 
     public float getPrecioMaterial(){
