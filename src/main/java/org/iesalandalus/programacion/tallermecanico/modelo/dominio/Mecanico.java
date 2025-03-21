@@ -23,7 +23,7 @@ public class Mecanico extends Trabajo{
         return FACTOR_PRECIO_MATERIAL * precioMaterial;
     }
 
-    public void anadirPRecioMaterial(float precioMaterial){
+    public void anadirPrecioMaterial(float precioMaterial){
         if (precioMaterial <= 0) {
             throw new IllegalArgumentException("El precio del material a añadir debe ser mayor que cero.");
         }

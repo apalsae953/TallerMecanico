@@ -43,7 +43,7 @@ public abstract class Trabajo {
     }
 
     public static Trabajo get(Vehiculo vehiculo) {
-        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo");
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
         return new Revision(Cliente.get("12345678Z"), vehiculo, LocalDate.now());
     }
 
@@ -116,9 +116,13 @@ public abstract class Trabajo {
             throw new IllegalArgumentException("Las horas a añadir deben ser mayores que cero.");
         }
         if (estaCerrada()) {
-            throw new TallerMecanicoExcepcion("No se puede añadir horas, ya que la revisión está cerrada.");
+            throw new TallerMecanicoExcepcion("No se puede añadir horas, ya que el trabajo está cerrado.");
         }
         this.horas += horas;
+    }
+
+    public boolean estaCerrado() {
+        return fechaFin != null;
     }
 
     public float getPrecio(){
