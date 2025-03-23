@@ -32,7 +32,7 @@ public abstract class Trabajo {
     }
 
     public static Trabajo copiar(Trabajo trabajo) {
-        Objects.requireNonNull(trabajo, "El trabajo no puede ser nulo");
+        Objects.requireNonNull(trabajo, "El trabajo no puede ser nulo.");
         Trabajo trabajoCopiado = null;
         if (trabajo instanceof Revision revision) {
             trabajoCopiado = new Revision(revision);
@@ -102,7 +102,7 @@ public abstract class Trabajo {
             throw new IllegalArgumentException("La fecha de fin no puede ser anterior a la fecha de inicio.");
         }
         if (estaCerrada()) {
-            throw new TallerMecanicoExcepcion("La revisión ya está cerrada.");
+            throw new TallerMecanicoExcepcion("El trabajo ya está cerrado.");
         }
         this.fechaFin = fechaFin;
     }
