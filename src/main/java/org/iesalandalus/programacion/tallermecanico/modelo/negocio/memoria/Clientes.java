@@ -1,13 +1,14 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Clientes {
+public class Clientes implements IClientes {
 
     public List<Cliente> clientes;
 
@@ -15,10 +16,12 @@ public class Clientes {
         clientes = new ArrayList<>();
     }
 
+    @Override
     public List<Cliente> get() {
         return clientes;
     }
 
+    @Override
     public void insertar(Cliente cliente) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(cliente,"No se puede insertar un cliente nulo.");
         if (clientes.contains(cliente)) {
@@ -27,6 +30,7 @@ public class Clientes {
         clientes.add(cliente);
     }
 
+    @Override
     public boolean modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion {
         if (cliente == null) {
             throw new NullPointerException("No se puede modificar un cliente nulo.");
@@ -61,6 +65,7 @@ public class Clientes {
 
     }
 
+    @Override
     public Cliente buscar(Cliente cliente) {
         Objects.requireNonNull(cliente,"No se puede buscar un cliente nulo.");
         int indice = clientes.indexOf(cliente);
@@ -71,6 +76,7 @@ public class Clientes {
 
     }
 
+    @Override
     public void borrar(Cliente cliente) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(cliente,"No se puede borrar un cliente nulo.");
         if (!clientes.contains(cliente)) {
