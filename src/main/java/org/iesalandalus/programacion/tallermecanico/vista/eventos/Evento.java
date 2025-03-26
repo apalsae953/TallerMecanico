@@ -1,0 +1,56 @@
+package org.iesalandalus.programacion.tallermecanico.vista.eventos;
+
+import org.iesalandalus.programacion.tallermecanico.vista.Opcion;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.iesalandalus.programacion.tallermecanico.vista.Opcion.opciones;
+
+public enum Evento {
+    INSERTAR_CLIENTE(11, "Insertar cliente"),
+    INSERTAR_VEHICULO(12, "Insertar vehiculo"),
+    INSERTAR_REVISION(13, "Insertar revision"),
+    BUSCAR_CLIENTE(21, "Buscar cliente"),
+    BUSCAR_VEHICULO(22, "Buscar vehiculo"),
+    BUSCAR_REVISION(23, "Buscar revision"),
+    BORRAR_CLIENTE(31, "Borrar cliente"),
+    BORRAR_VEHICULO(32, "Borrar vehiculo"),
+    BORRAR_REVISION(33, "Borrar revision"),
+    LISTAR_CLIENTES(41, "Listar clientes"),
+    LISTAR_VEHICULOS(42, "Listar vehiculos"),
+    LISTAR_REVISIONES(43, "Listar revisiones"),
+    LISTAR_REVISIONES_CLIENTE(44, "Listar revisiones de clientes"),
+    LISTAR_REVISIONES_VEHICULO(45, "Listar revisiones de vehiculos"),
+    ANADIR_HORAS_REVISION(51, "Añadir horas de revisión"),
+    ANADIR_PRECIO_MATERIAL_REVISION(52, "Añadir precio de material de revisión"),
+    MODIFICAR_CLIENTE(60, "Modificar cliente"),
+    CERRAR_REVISION(70, "Cerrar revisión"),
+    SALIR(0, "Salir");
+
+    private int codigo;
+    private String texto;
+    private Map<Integer, Evento> eventos = new HashMap<>();
+
+    Evento(int codigo, String texto) {
+        this.codigo = codigo;
+        this.texto = texto;
+    }
+
+    public boolean esValido(int codigo) {
+        return eventos.containsKey(codigo);
+    }
+
+    public Evento get(int codigo){
+        Evento evento = eventos.get(codigo);
+        if (!esValido(codigo)) {
+            throw new IllegalArgumentException("El código no es correcto.");
+        }
+        return evento;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" + "codigo=" + codigo + ", texto='" + texto + '\'' + ", eventos=" + eventos + '}';
+    }
+}
