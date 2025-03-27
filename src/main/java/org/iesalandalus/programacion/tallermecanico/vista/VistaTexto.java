@@ -95,4 +95,43 @@ public class VistaTexto {
 
     }
 
+    public void mostrarCliente(Cliente cliente){
+        Consola.mostrarCabecera("Datos del cliente: " + cliente.toString());
+    }
+
+    public void mostrarVehiculo(Vehiculo vehiculo){
+        Consola.mostrarCabecera("Datos del vehículo: " + vehiculo.toString());
+    }
+
+    public void mostrarTrabajo(Trabajo trabajo){
+        Consola.mostrarCabecera("Datos del trabajo: " + trabajo.toString());
+    }
+
+    public void mostrarClientes(List<Cliente> clientes){
+        Consola.mostrarCabecera("Listado de clientes:");
+        for (Cliente cliente : clientes) {
+            Consola.mostrarCabecera(cliente.toString());
+        }
+    }
+
+    public void mostrarVehiculo(List<Vehiculo> vehiculos){
+        Consola.mostrarCabecera("Listado de vehículos:");
+        for (Vehiculo vehiculo : vehiculos) {
+            Consola.mostrarCabecera(vehiculo.toString());
+        }
+    }
+
+    public void mostrarVehiculos(List<Vehiculo> vehiculo){
+        Consola.mostrarCabecera("Listado de vehículos: ");
+        for (Vehiculo vehiculo1 : vehiculo) {
+            Consola.mostrarCabecera(vehiculo1.toString());
+        }
+    }
+
+    public void mostrarTrabajos(List<Trabajo> trabajos){
+        Consola.mostrarCabecera("Listado de trabajos:");
+        for (Trabajo trabajo : trabajos) {
+            Consola.mostrarCabecera(trabajo.toString());
+        }
+    }
 }

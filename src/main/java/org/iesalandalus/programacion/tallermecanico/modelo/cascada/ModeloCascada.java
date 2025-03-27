@@ -3,10 +3,7 @@ package org.iesalandalus.programacion.tallermecanico.modelo.cascada;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
@@ -23,7 +20,11 @@ public class ModeloCascada implements Modelo {
     private ITrabajos trabajos;
 
     public ModeloCascada(FabricaFuenteDatos fabricaFuenteDatos) {
-        comenzar();
+        Objects.requireNonNull(fabricaFuenteDatos, "La factoría de la fuente de datos no puede ser nula.");
+        IFuenteDatos fuenteDatos = fabricaFuenteDatos.crear();
+        clientes = fuenteDatos.crearClientes();
+        vehiculos = fuenteDatos.crearVehiculos();
+        trabajos = fuenteDatos.crearTrabajos();
     }
 
     @Override
@@ -122,13 +123,15 @@ public class ModeloCascada implements Modelo {
 
     @Override
     public List<Cliente> getClientes() {
-        return clientes.get().stream().map(Cliente::new).collect(Collectors.toList());
+        List<Cliente> copiaClientes = new ArrayList<>();
+        for (Cliente cliente : clientes.get()) {
+            copiaClientes.add(new Cliente(cliente));
+        }
+        return copiaClientes;
     }
 
     @Override
-    public List<Vehiculo> getVehiculos() {
-        return new ArrayList<>(vehiculos.get());
-    }
+    public List<Vehiculo> getVehiculos() {return new ArrayList<>(vehiculos.get());}
 
     @Override
     public List<Trabajo> getTrabajos() {
