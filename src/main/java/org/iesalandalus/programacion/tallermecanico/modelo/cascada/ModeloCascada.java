@@ -35,7 +35,7 @@ public class ModeloCascada implements Modelo {
 
     @Override
     public void terminar() {
-        System.out.println("El modelo ha terminado");
+        System.out.println("El modelo ha terminado.");
     }
 
     @Override

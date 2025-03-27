@@ -2,261 +2,97 @@ package org.iesalandalus.programacion.tallermecanico.vista;
 
 import org.iesalandalus.programacion.tallermecanico.controlador.Controlador;
 import org.iesalandalus.programacion.tallermecanico.modelo.cascada.ModeloCascada;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
+import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
+import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class VistaTexto {
 
-    private Controlador controlador;
+    private GestorEventos gestorEventos;
 
-    public void setControlador(Controlador controlador) {
-        if (controlador != null) {
-            this.controlador = controlador;
-        }
-    }
+    public GestorEventos getGestorEventos() {return gestorEventos;}
 
     public void comenzar() {
-        Opcion opcion;
+        Evento opcion;
         do {
             Consola.mostrarMenu();
             opcion = Consola.elegirOpcion();
             ejecutar(opcion);
-        } while (opcion != Opcion.SALIR);
+        } while (opcion != Evento.SALIR);
+    }
+
+    private void ejecutar(Evento opcion) {
+        Consola.mostrarCabecera(opcion.toString());
+        Consola.elegirOpcion();
     }
 
     public void terminar() {
         Consola.mostrarCabecera("¡Hasta pronto!");
     }
 
-    private void ejecutar(Opcion opcion) {
-        switch (opcion) {
-            case INSERTAR_CLIENTE -> insertarCliente();
-            case INSERTAR_VEHICULO -> insertarVehiculo();
-            case INSERTAR_REVISION -> insertarRevision();
-            case BUSCAR_CLIENTE -> buscarCliente();
-            case BUSCAR_VEHICULO -> buscarVehiculo();
-            case BUSCAR_REVISION -> buscarRevision();
-            case MODIFICAR_CLIENTE-> modificarCliente();
-            case ANADIR_HORAS_REVISION -> anadirHoras();
-            case ANADIR_PRECIO_MATERIAL_REVISION -> anadirPrecioMaterial();
-            case CERRAR_REVISION -> cerrarRevision();
-            case BORRAR_CLIENTE -> borrarCliente();
-            case BORRAR_VEHICULO -> borrarVehiculo();
-            case BORRAR_REVISION -> borrarRevision();
-            case LISTAR_CLIENTES -> listarClientes();
-            case LISTAR_VEHICULOS -> listarVehiculos();
-            case LISTAR_REVISIONES -> listarRevisiones();
-            case LISTAR_REVISIONES_CLIENTE -> listarRevisionesCliente();
-            case LISTAR_REVISIONES_VEHICULO -> listarRevisionesVehiculo();
-            case SALIR -> terminar();
-        }
+    public Cliente leerCliente(){
+        String nombre = Consola.leerCadena("Dime tu nombre: ");
+        String dni = Consola.leerCadena("Dime tu dni: ");
+        String telefono = Consola.leerCadena("Dime tu teléfono: ");
+
+        return new Cliente(nombre, dni, telefono);
     }
 
-    private void insertarCliente() {
-        Consola.mostrarCabecera("Insertar Cliente");
-        try {
-            Cliente cliente = Consola.leerCliente();
-            controlador.insertar(cliente);
-            System.out.println("Cliente insertado correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Cliente leerClienteDni(){
+        return Cliente.get(Consola.leerCadena("Dime tu dni: "));
     }
 
-    private void insertarVehiculo() {
-        Consola.mostrarCabecera("Insertar Vehículo");
-        try {
-            Vehiculo vehiculo = Consola.leerVehiculo();
-            controlador.insertar(vehiculo);
-            System.out.println("Vehículo insertado correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public String leerNuevoNombre(){
+        return Consola.leerCadena("Dime el nuevo nombre: ");
     }
 
-    private void insertarRevision() {
-        Consola.mostrarCabecera("Insertar Revisión");
-        try {
-            Revision revision = Consola.leerRevision();
-            controlador.insertar(revision);
-            System.out.println("Revisión insertada correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public String leerNuevoTelefono(){
+        return Consola.leerCadena("Dime tu nuevo número de teléfono: ");
     }
 
-    private void buscarCliente() {
-        Consola.mostrarCabecera("Buscar Cliente");
-        try {
-            Cliente cliente = Consola.leerClienteDni();
-            cliente = controlador.buscar(cliente);
-            System.out.println(cliente != null ? cliente : "Cliente no encontrado.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Vehiculo leerVehiculo(){
+        String marca = Consola.leerCadena("Dime tu marca: ");
+        String modelo = Consola.leerCadena("Dime tu modelo: ");
+        String matricula = Consola.leerCadena("Dime tu matrícula: ");
+        return new Vehiculo(marca, modelo, matricula);
     }
 
-    private void buscarVehiculo() {
-        Consola.mostrarCabecera("Buscar Vehículo");
-        try {
-            Vehiculo vehiculo = Consola.leerVehiculoMatricula();
-            vehiculo = controlador.buscar(vehiculo);
-            System.out.println(vehiculo != null ? vehiculo : "Vehículo no encontrado.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Vehiculo leerVehiculoMatricula(){
+        return Vehiculo.get(Consola.leerCadena("Dime tu nueva matrícula: "));
     }
 
-    private void buscarRevision() {
-        Consola.mostrarCabecera("Buscar Revisión");
-        try {
-            Revision revision = Consola.leerRevision();
-            revision = controlador.buscar(revision);
-            System.out.println(revision != null ? revision : "Revisión no encontrada.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Trabajo leerRevision(){
+        Cliente cliente = leerCliente();
+        Vehiculo vehiculo = leerVehiculo();
+        LocalDate fechaInicio = Consola.leerFecha("Dime la fecha de inicio: ");
+        return  new Revision(cliente, vehiculo, fechaInicio);
     }
 
-    private void modificarCliente() {
-        Consola.mostrarCabecera("Modificar Cliente");
-        try {
-            Cliente cliente = Consola.leerClienteDni();
-            String nuevoNombre = Consola.leerNuevoNombre();
-            String nuevoTelefono = Consola.leerNuevoTelefono();
-            controlador.modificar(cliente, nuevoNombre, nuevoTelefono);
-            System.out.println("Cliente modificado correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Trabajo leerMecanico(){
+        Cliente cliente = leerCliente();
+        Vehiculo vehiculo = leerVehiculo();
+        LocalDate fechaInicio = Consola.leerFecha("Dime la fecha de inicio: ");
+        return new Mecanico(cliente, vehiculo, fechaInicio);
     }
 
-    private void anadirHoras() {
-        Consola.mostrarCabecera("Añadir Horas");
-        try {
-            Revision revision = Consola.leerRevision();
-            int horas = Consola.leerHoras();
-            controlador.anadirHoras(revision, horas);
-            System.out.println("Horas añadidas correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public int leerHoras(){
+        return Consola.leerEntero("Dime las horas trabajadas: ");
     }
 
-    private void anadirPrecioMaterial() {
-        Consola.mostrarCabecera("Añadir Precio Material");
-        try {
-            Revision revision = Consola.leerRevision();
-            float precioMaterial = Consola.leerPrecioMaterial();
-            controlador.anadirPrecioMaterial(revision, precioMaterial);
-            System.out.println("Precio del material añadido correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public float leerPrecioMaterial(){
+        return Consola.leerReal("Dime el precio del material: ");
     }
 
-    private void cerrarRevision() {
-        Consola.mostrarCabecera("Cerrar Revisión");
-        try {
-            Revision revision = Consola.leerRevision();
-            LocalDate fechaCierre = Consola.leerFechaCierre();
-            controlador.cerrar(revision, fechaCierre);
-            System.out.println("Revisión cerrada correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public LocalDate leerFechaCierre(){
+        return Consola.leerFecha("Dime la fecha de fin: ");
     }
 
-    private void borrarCliente() {
-        Consola.mostrarCabecera("Borrar Cliente");
-        try {
-            Cliente cliente = Consola.leerClienteDni();
-            controlador.borrar(cliente);
-            System.out.println("Cliente borrado correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void notificarResultados(Evento evento, String texto, boolean exito) {
+
     }
 
-    private void borrarVehiculo() {
-        Consola.mostrarCabecera("Borrar Vehículo");
-        try {
-            Vehiculo vehiculo = Consola.leerVehiculoMatricula();
-            controlador.borrar(vehiculo);
-            System.out.println("Vehículo borrado correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void borrarRevision() {
-        Consola.mostrarCabecera("Borrar Revisión");
-        try {
-            Revision revision = Consola.leerRevision();
-            controlador.borrar(revision);
-            System.out.println("Revisión borrada correctamente.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void listarClientes() {
-        Consola.mostrarCabecera("Listar Clientes");
-        try {
-            for (Cliente cliente : controlador.getClientes()) {
-                System.out.println(cliente);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void listarVehiculos() {
-        Consola.mostrarCabecera("Listar Vehículos");
-        try {
-            for (Vehiculo vehiculo : controlador.getVehiculos()) {
-                System.out.println(vehiculo);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void listarRevisiones() {
-        Consola.mostrarCabecera("Listar Revisiones");
-        try {
-            for (Revision revision : controlador.getRevisiones()) {
-                System.out.println(revision);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void listarRevisionesCliente() {
-        Consola.mostrarCabecera("Listar Revisiones por Cliente");
-        try {
-            Cliente cliente = Consola.leerClienteDni();
-            for (Revision revision : controlador.getRevisiones(cliente)) {
-                System.out.println(revision);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void listarRevisionesVehiculo() {
-        Consola.mostrarCabecera("Listar Revisiones por Vehículo");
-        try {
-            Vehiculo vehiculo = Consola.leerVehiculoMatricula();
-            for (Revision revision : controlador.getRevisiones(vehiculo)) {
-                System.out.println(revision);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }

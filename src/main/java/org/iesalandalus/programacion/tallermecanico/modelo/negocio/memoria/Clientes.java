@@ -38,7 +38,9 @@ public class Clientes implements IClientes {
         boolean modificado = false;
 
         Cliente clienteExistente = buscar(cliente);
-
+        if (clienteExistente == null) {
+            throw new TallerMecanicoExcepcion("No existe ningún cliente con ese DNI.");
+        }
         if (nombre != null) {
             if (nombre.isBlank()) {
                 throw new TallerMecanicoExcepcion("El nombre no puede estar en blanco.");

@@ -1,11 +1,7 @@
 package org.iesalandalus.programacion.tallermecanico.vista.eventos;
 
-import org.iesalandalus.programacion.tallermecanico.vista.Opcion;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.iesalandalus.programacion.tallermecanico.vista.Opcion.opciones;
 
 public enum Evento {
     INSERTAR_CLIENTE(11, "Insertar cliente"),
@@ -30,18 +26,18 @@ public enum Evento {
 
     private int codigo;
     private String texto;
-    private Map<Integer, Evento> eventos = new HashMap<>();
+    private static Map<Integer, Evento> eventos = new HashMap<>();
 
     Evento(int codigo, String texto) {
         this.codigo = codigo;
         this.texto = texto;
     }
 
-    public boolean esValido(int codigo) {
+    public static boolean esValido(int codigo) {
         return eventos.containsKey(codigo);
     }
 
-    public Evento get(int codigo){
+    public static Evento get(int codigo){
         Evento evento = eventos.get(codigo);
         if (!esValido(codigo)) {
             throw new IllegalArgumentException("El código no es correcto.");
