@@ -8,6 +8,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clien
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 
+import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +90,7 @@ public class ModeloCascada implements Modelo {
     }
 
     @Override
-    public Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion {
+    public Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion, OperationNotSupportedException {
         return trabajos.anadirPrecioMaterial(trabajo, precioMaterial);
     }
 
@@ -99,7 +100,7 @@ public class ModeloCascada implements Modelo {
     }
 
     @Override
-    public void borrar(Cliente cliente) throws TallerMecanicoExcepcion {
+    public void borrar(Cliente cliente) throws TallerMecanicoExcepcion, OperationNotSupportedException {
         List<Trabajo> trabajosCliente = trabajos.get(cliente);
         for (Trabajo trabajo : trabajosCliente) {
             trabajos.borrar(trabajo);
@@ -108,7 +109,7 @@ public class ModeloCascada implements Modelo {
     }
 
     @Override
-    public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
+    public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion, OperationNotSupportedException {
         List<Trabajo> trabajosVehiculo = trabajos.get(vehiculo);
         for (Trabajo trabajo : trabajosVehiculo) {
             trabajos.borrar(trabajo);
@@ -117,7 +118,7 @@ public class ModeloCascada implements Modelo {
     }
 
     @Override
-    public void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion {
+    public void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion, OperationNotSupportedException {
         trabajos.borrar(trabajo);
     }
 

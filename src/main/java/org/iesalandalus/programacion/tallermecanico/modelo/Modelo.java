@@ -4,6 +4,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 
+import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -28,15 +29,15 @@ public interface Modelo {
 
     Trabajo anadirHoras(Trabajo trabajo, int horas) throws TallerMecanicoExcepcion;
 
-    Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion;
+    Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion, OperationNotSupportedException;
 
     Trabajo cerrar(Trabajo trabajo, LocalDate fechaFin) throws TallerMecanicoExcepcion;
 
-    void borrar(Cliente cliente) throws TallerMecanicoExcepcion;
+    void borrar(Cliente cliente) throws TallerMecanicoExcepcion, OperationNotSupportedException;
 
-    void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion;
+    void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion, OperationNotSupportedException;
 
-    void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion;
+    void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion, OperationNotSupportedException;
 
     List<Cliente> getClientes();
 
