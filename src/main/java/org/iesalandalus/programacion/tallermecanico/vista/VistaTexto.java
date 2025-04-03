@@ -1,9 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.vista;
 
-import org.iesalandalus.programacion.tallermecanico.controlador.Controlador;
-import org.iesalandalus.programacion.tallermecanico.modelo.cascada.ModeloCascada;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
 
@@ -91,8 +88,12 @@ public class VistaTexto {
         return Consola.leerFecha("Dime la fecha de fin: ");
     }
 
-    public void notificarResultados(Evento evento, String texto, boolean exito) {
-
+    public void notificarResultado(Evento evento, String texto, boolean exito) {
+        if (exito) {
+            System.out.println(texto);
+        } else {
+            System.out.printf("ERROR: %s%n", texto);
+        }
     }
 
     public void mostrarCliente(Cliente cliente){
@@ -103,7 +104,7 @@ public class VistaTexto {
         Consola.mostrarCabecera("Datos del vehículo: " + vehiculo.toString());
     }
 
-    public void mostrarTrabajo(Trabajo trabajo){
+    public void leerRevision(Trabajo trabajo){
         Consola.mostrarCabecera("Datos del trabajo: " + trabajo.toString());
     }
 
