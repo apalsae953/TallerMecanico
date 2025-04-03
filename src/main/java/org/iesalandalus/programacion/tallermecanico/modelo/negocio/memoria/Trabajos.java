@@ -78,6 +78,7 @@ public class Trabajos implements ITrabajos {
         Objects.requireNonNull(trabajo, "No puedo añadir horas a un trabajo nulo.");
         Trabajo trabajoEncontrado = getTrabajoAbierto(trabajo.getVehiculo());
         trabajoEncontrado.anadirHoras(horas);
+        return trabajoEncontrado;
     }
 
     private Trabajo getTrabajoAbierto(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
@@ -91,7 +92,7 @@ public class Trabajos implements ITrabajos {
             }
         }
         if ( trabajoEncontrado == null ){
-            throw new TallerMecanicoExcepcion("No existe ningún trabajo abierto para dicho vehículo.")
+            throw new TallerMecanicoExcepcion("No existe ningún trabajo abierto para dicho vehículo.");
         }
         return trabajoEncontrado;
     }

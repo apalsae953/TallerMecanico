@@ -8,7 +8,7 @@ import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 
 import javax.naming.OperationNotSupportedException;
 
-public class Controlador {
+public class Controlador implements IControlador {
 
     private Modelo modelo;
     private VistaTexto vista;
@@ -21,16 +21,19 @@ public class Controlador {
         this.vista = vista;
     }
 
+    @Override
     public void comenzar() {
         modelo.comenzar();
         vista.comenzar();
     }
 
+    @Override
     public void terminar() {
         vista.terminar();
         modelo.terminar();
     }
 
+    @Override
     public void actualizar(Evento evento) {
         try {
             switch (evento) {
