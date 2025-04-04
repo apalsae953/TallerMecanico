@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.tallermecanico.controlador;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.vista.Vista;
 import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 
@@ -11,9 +12,9 @@ import javax.naming.OperationNotSupportedException;
 public class Controlador implements IControlador {
 
     private Modelo modelo;
-    private VistaTexto vista;
+    private Vista vista;
 
-    public Controlador(Modelo modelo, VistaTexto vista) {
+    public Controlador(Modelo modelo, Vista vista) {
         if (modelo == null || vista == null) {
             throw new NullPointerException("El modelo y la vista no pueden ser nulos.");
         }

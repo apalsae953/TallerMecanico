@@ -28,6 +28,12 @@ public enum Evento {
     private String texto;
     private static Map<Integer, Evento> eventos = new HashMap<>();
 
+    static {
+        for (Evento evento : Evento.values()) {
+            eventos.put(evento.codigo, evento);
+        }
+    }
+
     Evento(int codigo, String texto) {
         this.codigo = codigo;
         this.texto = texto;
@@ -38,15 +44,14 @@ public enum Evento {
     }
 
     public static Evento get(int codigo){
-        Evento evento = eventos.get(codigo);
         if (!esValido(codigo)) {
             throw new IllegalArgumentException("El código no es correcto.");
         }
-        return evento;
+        return eventos.get(codigo);
     }
 
     @Override
     public String toString() {
-        return "Evento{" + "codigo=" + codigo + ", texto='" + texto + '\'' + ", eventos=" + eventos + '}';
+        return String.format("%d.- %s", codigo, texto);
     }
 }

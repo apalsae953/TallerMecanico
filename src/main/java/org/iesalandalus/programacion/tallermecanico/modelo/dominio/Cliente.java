@@ -88,8 +88,9 @@ public class Cliente {
         return Objects.hash(getDni());
     }
 
+
     @Override
     public String toString() {
-        return String.format("%s - %s (%s)", nombre, dni, telefono);
+        return String.format("[dni=%s, nombre=%s, telefono=%s]", dni, nombre, telefono);
     }
 }
