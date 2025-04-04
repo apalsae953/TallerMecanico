@@ -10,7 +10,7 @@ import java.util.List;
 
 public class VistaTexto implements Vista {
 
-    private GestorEventos gestorEventos;
+    private final GestorEventos gestorEventos = new GestorEventos(Evento.values());
 
     @Override
     public GestorEventos getGestorEventos() {return gestorEventos;}
@@ -23,6 +23,11 @@ public class VistaTexto implements Vista {
             opcion = Consola.elegirOpcion();
             ejecutar(opcion);
         } while (opcion != Evento.SALIR);
+    }
+
+    private void ejecutar(Evento opcion) {
+        Consola.mostrarCabecera(opcion.toString());
+        gestorEventos.notificar(opcion);
     }
 
     @Override

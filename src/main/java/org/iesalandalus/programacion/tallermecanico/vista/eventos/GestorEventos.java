@@ -3,10 +3,13 @@ package org.iesalandalus.programacion.tallermecanico.vista.eventos;
 import java.util.*;
 
 public class GestorEventos {
-    private Map<Evento, List<ReceptorEventos>> receptores;
+    private final Map<Evento, List<ReceptorEventos>> receptores  = new EnumMap<>(Evento.class);
 
     public GestorEventos(Evento... eventos){
         Objects.requireNonNull(eventos, "Se debe gestionar algún evento.");
+        for (Evento evento : eventos) {
+            receptores.put(evento,new ArrayList<>());
+        }
     }
 
     public void suscribir(ReceptorEventos receptor, Evento... eventos) {
@@ -28,8 +31,13 @@ public class GestorEventos {
         }
     }
 
-    public void notificar(Evento evento){
-
+    public void notificar(Evento evento) {
+        List<ReceptorEventos> listaReceptores = receptores.get(evento);
+        if (listaReceptores != null) {
+            for (ReceptorEventos receptor : listaReceptores) {
+                receptor.actualizar(evento);
+            }
+        }
     }
 
 }

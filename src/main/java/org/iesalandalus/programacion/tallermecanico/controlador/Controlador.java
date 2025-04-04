@@ -4,7 +4,6 @@ import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.vista.Vista;
-import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 
 import javax.naming.OperationNotSupportedException;
@@ -62,11 +61,8 @@ public class Controlador implements IControlador {
                 }
                 case CERRAR_REVISION -> modelo.cerrar(vista.leerRevision(), vista.leerFechaCierre());
                 case SALIR -> terminar();
-
-        }
-    } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        } catch (TallerMecanicoExcepcion e) {
+            }
+        } catch (OperationNotSupportedException | TallerMecanicoExcepcion e) {
             throw new RuntimeException(e);
         }
     }

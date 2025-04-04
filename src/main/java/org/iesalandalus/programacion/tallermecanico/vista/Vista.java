@@ -5,7 +5,6 @@ import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
-import org.iesalandalus.programacion.tallermecanico.vista.texto.Consola;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,11 +13,6 @@ public interface Vista {
     GestorEventos getGestorEventos();
 
     void comenzar();
-
-    default void ejecutar(Evento opcion) {
-        Consola.mostrarCabecera(opcion.toString());
-        Consola.elegirOpcion();
-    }
 
     void terminar();
 
@@ -59,4 +53,5 @@ public interface Vista {
     void mostrarVehiculos(List<Vehiculo> vehiculo);
 
     void mostrarTrabajos(List<Trabajo> trabajos);
+
 }
