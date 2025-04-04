@@ -6,7 +6,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.vista.VistaTexto;
+import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;

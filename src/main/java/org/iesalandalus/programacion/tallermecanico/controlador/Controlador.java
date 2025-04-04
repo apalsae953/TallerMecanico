@@ -3,7 +3,7 @@ package org.iesalandalus.programacion.tallermecanico.controlador;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.vista.VistaTexto;
+import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 
 import javax.naming.OperationNotSupportedException;
