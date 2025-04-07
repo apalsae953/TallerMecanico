@@ -43,24 +43,25 @@ public class Controlador implements IControlador {
                 case INSERTAR_REVISION -> modelo.insertar(vista.leerRevision());
                 case BUSCAR_CLIENTE -> vista.mostrarCliente(modelo.buscar(vista.leerCliente()));
                 case BUSCAR_VEHICULO -> vista.mostrarVehiculo(modelo.buscar(vista.leerVehiculo()));
-                case BUSCAR_REVISION -> vista.leerRevision(modelo.buscar(vista.leerRevision()));
+                case BUSCAR_TRABAJO -> vista.leerRevision(modelo.buscar(vista.leerRevision()));
                 case BORRAR_CLIENTE -> modelo.borrar(vista.leerCliente());
                 case BORRAR_VEHICULO -> modelo.borrar(vista.leerVehiculo());
-                case BORRAR_REVISION -> modelo.borrar(vista.leerRevision());
+                case BORRAR_TRABAJO -> modelo.borrar(vista.leerRevision());
                 case LISTAR_CLIENTES -> vista.mostrarClientes(modelo.getClientes());
                 case LISTAR_VEHICULOS -> vista.mostrarVehiculos(modelo.getVehiculos());
-                case LISTAR_REVISIONES -> vista.mostrarTrabajos(modelo.getTrabajos());
-                case LISTAR_REVISIONES_CLIENTE -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerCliente()));
-                case LISTAR_REVISIONES_VEHICULO -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerVehiculo()));
-                case ANADIR_HORAS_REVISION -> modelo.anadirHoras(vista.leerRevision(), vista.leerHoras());
-                case ANADIR_PRECIO_MATERIAL_REVISION -> modelo.anadirPrecioMaterial(vista.leerRevision(), vista.leerPrecioMaterial());
+                case LISTAR_TRABAJOS -> vista.mostrarTrabajos(modelo.getTrabajos());
+                case LISTAR_TRABAJOS_CLIENTE -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerCliente()));
+                case LISTAR_TRABAJOS_VEHICULO -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerVehiculo()));
+                case ANADIR_HORAS_TRABAJO -> modelo.anadirHoras(vista.leerRevision(), vista.leerHoras());
+                case ANADIR_PRECIO_MATERIAL_TRABAJO -> modelo.anadirPrecioMaterial(vista.leerRevision(), vista.leerPrecioMaterial());
                 case MODIFICAR_CLIENTE -> {
                     Cliente cliente = vista.leerCliente();
                     String nombre = vista.leerNuevoNombre();
                     String telefono = vista.leerNuevoTelefono();
                     modelo.modificar(cliente, nombre, telefono);
                 }
-                case CERRAR_REVISION -> modelo.cerrar(vista.leerRevision(), vista.leerFechaCierre());
+                case CERRAR_TRABAJO -> modelo.cerrar(vista.leerRevision(), vista.leerFechaCierre());
+                case ESTADISTICAS_MENSUALES -> modelo.getEstadisticasMensuales((vista.leerMes()));
                 case SALIR -> terminar();
             }
         } catch (OperationNotSupportedException | TallerMecanicoExcepcion e) {

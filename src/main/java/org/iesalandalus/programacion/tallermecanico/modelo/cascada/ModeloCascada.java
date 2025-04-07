@@ -10,9 +10,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehic
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ModeloCascada implements Modelo {
@@ -159,5 +157,21 @@ public class ModeloCascada implements Modelo {
             trabajosVehiculos.add(Trabajo.copiar(trabajo));
         }
         return trabajosVehiculos;
+    }
+
+    public Map<TipoTrabajo,Integer> getEstadisticasMensuales(LocalDate mes) {
+        List<Trabajo> coleccionTrabajos = new ArrayList<>(trabajos.get());
+        Map<TipoTrabajo,Integer> estadisticasMensuales = new HashMap<>();
+        for (Trabajo trabajo : coleccionTrabajos) {
+            if (trabajo.getFechaInicio().getMonth().equals(mes.getMonth())) {
+                TipoTrabajo tipoTrabajo = TipoTrabajo.get(trabajo);
+                if (estadisticasMensuales.containsKey(tipoTrabajo)) {
+                    estadisticasMensuales.put(tipoTrabajo, estadisticasMensuales.get(tipoTrabajo) + 1);
+                } else {
+                    estadisticasMensuales.put(tipoTrabajo, 1);
+                }
+            }
+        }
+        return estadisticasMensuales;
     }
 }

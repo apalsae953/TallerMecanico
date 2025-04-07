@@ -10,6 +10,12 @@ import java.util.Objects;
 
 public class Clientes implements IClientes {
 
+    private static final String FICHEROS_CLIENTES = "";
+    private static final String RAIZ = "";
+    private static final String CLIENTE = "";
+    private static final String NOMBRE = "";
+    private static final String DNI = "";
+    private static final String TELEFONO = "";
     public List<Cliente> clientes;
 
     public Clientes() {

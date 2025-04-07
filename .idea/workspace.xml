@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="Commit inicial con el enunciado, las dependencias y los tests.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio/TipoTrabajo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/IControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/IControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/ReceptorEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/ReceptorEventos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/Modelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/cascada/ModeloCascada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/cascada/ModeloCascada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/ITrabajos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/ITrabajos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Clientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Clientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Trabajos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Trabajos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Vista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/texto/VistaTexto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/texto/VistaTexto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +61,13 @@
         <option value="Exception" />
         <option value="Class" />
         <option value="Enum" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="refactorizacion_herencia" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,8 +80,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/apalsae953/TallerMecanico.git&quot;,
-    &quot;accountId&quot;: &quot;e02d927d-adf0-4217-b308-8da9cba3a80b&quot;
+    &quot;url&quot;: &quot;https://github.com/JRJimenezReyes/TallerMecanico.git&quot;,
+    &quot;accountId&quot;: &quot;7afb4187-7209-404d-b356-a4a604097a01&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -90,49 +96,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build TallerMecanico.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.RevisionTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.TrabajoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClienteTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientesTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MecanicoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ModeloTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RevisionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TrabajoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TrabajosTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VehiculoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VehiculosTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ChatTagsLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyMigrateChatHistory-v2&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.DeprecatedChatLlmMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Snoker_131/Documents/GitHub/TallerMecanico&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build TallerMecanico.executor": "Run",
+    "Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'.executor": "Run",
+    "JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test.executor": "Run",
+    "RunOnceActivity.ChatTagsLlmMigration": "true",
+    "RunOnceActivity.CodyAccountHistoryMigration": "true",
+    "RunOnceActivity.CodyAccountsIdsRefresh": "true",
+    "RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount": "true",
+    "RunOnceActivity.CodyConvertUrlToCodebaseName": "true",
+    "RunOnceActivity.CodyHistoryLlmMigration": "true",
+    "RunOnceActivity.CodyMigrateChatHistory-v2": "true",
+    "RunOnceActivity.CodyProjectSettingsMigration": "true",
+    "RunOnceActivity.DeprecatedChatLlmMigration": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.ToggleCodyToolWindowAfterMigration": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "com.codeium.enabled": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "ficheros",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/pepino/Desarrollos/java/IntelliJ/Copias-TallerMecanico/TallerMecanico",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio" />
@@ -141,19 +135,13 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="org.iesalandalus.programacion.tallermecanico.vista.texto" />
-      <recent name="org.iesalandalus.programacion.tallermecanico.controlador" />
-      <recent name="org.iesalandalus.programacion.tallermecanico.modelo.cascada" />
-      <recent name="org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.negocio" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.dominio" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'">
+  <component name="RunManager">
     <configuration name="Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -255,10 +243,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TrabajoTest" />
         <item itemvalue="JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test" />
         <item itemvalue="JUnit.TrabajoTest" />
         <item itemvalue="JUnit.RevisionTest" />
+        <item itemvalue="Gradle.TrabajoTest" />
         <item itemvalue="Gradle.Tests in 'org.iesalandalus.programacion.tallermecanico.modelo'" />
       </list>
     </recent_temporary>
@@ -288,143 +276,35 @@
       <option name="project" value="LOCAL" />
       <updated>1739183845414</updated>
     </task>
-    <task id="LOCAL-00003" summary="Commit inicial con el enunciado, las dependencias y los tests.">
+    <task id="LOCAL-00003" summary="Errata en el enunciado y en el diagrama.">
       <option name="closed" value="true" />
-      <created>1742463279759</created>
+      <created>1739527892917</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1742463279759</updated>
+      <updated>1739527892917</updated>
     </task>
-    <task id="LOCAL-00004" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742550538512</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1742550538512</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742556275845</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1742556275846</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742557408664</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1742557408664</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742759569425</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1742759569425</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742822394720</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1742822394720</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1742989909921</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1742989909921</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743070172964</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1743070172964</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743075852759</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1743075852759</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743674679886</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1743674679886</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743675346581</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1743675346581</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743676041876</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1743676041876</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743755828293</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1743755828293</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743757828599</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1743757828599</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743760302346</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1743760302346</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Commit inicial con el enunciado, las dependencias y los tests.">
-      <option name="closed" value="true" />
-      <created>1743763601150</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1743763601150</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="Commit inicial con el enunciado, las dependencias y los tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit inicial con el enunciado, las dependencias y los tests." />
+    <MESSAGE value="Errata en el enunciado y en el diagrama." />
+    <option name="LAST_COMMIT_MESSAGE" value="Errata en el enunciado y en el diagrama." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -1,25 +1,38 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Mecanico;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Trabajos implements ITrabajos {
 
+    private static final String FICHEROS_TRABAJOS = "";
+    private static final DateTimeFormatter FORMATO_FECHA = null;
+    private static final String RAIZ = "";
+    private static final String TRABAJO = "";
+    private static final String CLIENTE = "";
+    private static final String VEHICULO = "";
+    private static final String FECHA_INICIO = "";
+    private static final String FECHA_FIN = "";
+    private static final String HORAS = "";
+    private static final String PRECIO_MATERIAL = "";
+    private static final String TIPO = "";
+    private static final String REVISION = "";
+    private static final String MECANICO = "";
+    private Trabajos instancia;
     private List<Trabajo> coleccionTrabajos;
 
-    public Trabajos() {
+    private Trabajos() {
         coleccionTrabajos = new ArrayList<>();
+    }
+
+    public Trabajos getInstancia() {
+        return instancia;
     }
 
     @Override
@@ -47,6 +60,28 @@ public class Trabajos implements ITrabajos {
             }
         }
         return trabajosVehiculos;
+    }
+
+    public Map<TipoTrabajo,Integer> getEstadisticasMensuales(LocalDate mes) {
+        Map<TipoTrabajo,Integer> estadisticasMensuales = new HashMap<>();
+        for (Trabajo trabajo : coleccionTrabajos) {
+            if (trabajo.getFechaInicio().getMonth().equals(mes.getMonth())) {
+                TipoTrabajo tipoTrabajo = TipoTrabajo.get(trabajo);
+                if (estadisticasMensuales.containsKey(tipoTrabajo)) {
+                    estadisticasMensuales.put(tipoTrabajo, estadisticasMensuales.get(tipoTrabajo) + 1);
+                } else {
+                    estadisticasMensuales.put(tipoTrabajo, 1);
+                }
+            }
+        }
+        return estadisticasMensuales;
+    }
+
+    private Map<TipoTrabajo,Integer> inicializarEstadisticas(){
+        Map<TipoTrabajo,Integer> estadisticasMensuales = new HashMap<>();
+        estadisticasMensuales.put(TipoTrabajo.MECANICO, 0);
+        estadisticasMensuales.put(TipoTrabajo.REVISION, 0);
+        return estadisticasMensuales;
     }
 
     @Override
