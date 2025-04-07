@@ -19,6 +19,7 @@ public class Controlador implements IControlador {
         }
         this.modelo = modelo;
         this.vista = vista;
+        vista.getGestorEventos().suscribir(this, Evento.values());
     }
 
     @Override
