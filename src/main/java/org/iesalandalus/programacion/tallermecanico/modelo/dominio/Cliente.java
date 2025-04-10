@@ -91,6 +91,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return String.format("[dni=%s, nombre=%s, telefono=%s]", dni, nombre, telefono);
+        return String.format("cliente dni=%s, nombre=%s, telefono=%s]", dni, nombre, telefono);
     }
 }

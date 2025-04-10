@@ -4,14 +4,10 @@ import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ModeloCascada implements Modelo {
     private IVehiculos vehiculos;
@@ -28,9 +24,9 @@ public class ModeloCascada implements Modelo {
 
     @Override
     public void comenzar() {
-        clientes = new Clientes();
-        vehiculos = new Vehiculos();
-        trabajos = new Trabajos();
+        clientes = clientes.getInstancia();
+        vehiculos = vehiculos.getInstancia();
+        trabajos = trabajos.getInstancia();
     }
 
     @Override
