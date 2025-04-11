@@ -3,27 +3,29 @@ package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
+import org.w3c.dom.Document;
 
 import javax.naming.OperationNotSupportedException;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Trabajos implements ITrabajos {
 
-    private static final String FICHEROS_TRABAJOS = "";
-    private static final DateTimeFormatter FORMATO_FECHA = null;
-    private static final String RAIZ = "";
-    private static final String TRABAJO = "";
-    private static final String CLIENTE = "";
-    private static final String VEHICULO = "";
-    private static final String FECHA_INICIO = "";
-    private static final String FECHA_FIN = "";
-    private static final String HORAS = "";
-    private static final String PRECIO_MATERIAL = "";
-    private static final String TIPO = "";
-    private static final String REVISION = "";
-    private static final String MECANICO = "";
+    private static final String FICHERO_TRABAJOS = String.format("%s%s%s", "ficheros", File.separator, "ficheroTexto.txt");
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final String RAIZ = "Trabajos";
+    private static final String TRABAJO = "Trabajos";
+    private static final String CLIENTE = "Cliente";
+    private static final String VEHICULO = "Vehículo";
+    private static final String FECHA_INICIO = "Fecha Inicio";
+    private static final String FECHA_FIN = "Fecha Fin";
+    private static final String HORAS = "Horas";
+    private static final String PRECIO_MATERIAL = "Precio Material";
+    private static final String TIPO = "Tipo";
+    private static final String REVISION = "Revisión";
+    private static final String MECANICO = "Mecánico";
     private Trabajos instancia;
     private List<Trabajo> coleccionTrabajos;
 
@@ -33,6 +35,14 @@ public class Trabajos implements ITrabajos {
 
     public Trabajos getInstancia() {
         return instancia;
+    }
+
+    public void comenzar(){
+        Document documentoXml = UtilidadesXml.leerDocumentoXml(FICHERO_TRABAJOS);
+        if (documentoXml != null) {
+            procesarDocumentoXml(documentoXml);
+            System.out.printf("Fichero %s leído correctamente.%n", FICHERO_TRABAJOS);
+        }
     }
 
     @Override

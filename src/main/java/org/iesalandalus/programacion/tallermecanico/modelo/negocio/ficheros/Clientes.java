@@ -7,9 +7,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-
-import javax.naming.OperationNotSupportedException;
 import javax.xml.parsers.DocumentBuilder;
 import java.io.File;
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ import java.util.Objects;
 
 public class Clientes implements IClientes {
 
-    private static final String FICHERO_CLIENTES = String.format("%s%s%s", "ficheros", File.separator, "ficheroTexto.txt");;
+    private static final String FICHERO_CLIENTES = String.format("%s%s%s", "ficheros", File.separator, "ficheroTexto.txt");
     private static final String RAIZ = "Clientes";
     private static final String CLIENTE = "Cliente";
     private static final String NOMBRE = "Nombre";
@@ -61,11 +58,22 @@ public class Clientes implements IClientes {
     }
 
     public void terminar() {
-
+        Document documentoXml = crearDocumentoXml();
+        UtilidadesXml.escribirDocumentoXml(documentoXml, FICHERO_CLIENTES);
     }
 
     private Document crearDocumentoXml() {
-        DocumentBuilder documentoXml = UtilidadesXml.crearConstructorDocumentoXml();
+        DocumentBuilder constructor = UtilidadesXml.crearConstructorDocumentoXml();
+        Document documentoXml = null;
+        if (constructor != null) {
+            documentoXml = constructor.newDocument();
+            documentoXml.appendChild(documentoXml.createElement(RAIZ));
+            for (Cliente cliente : coleccionClientes) {
+                Element elemento = getElemento(documentoXml, cliente);
+                documentoXml.getDocumentElement().appendChild(elemento);
+            }
+        }
+        return documentoXml;
     }
 
     private Element getElemento(Document documentoXml, Cliente cliente) {
@@ -119,7 +127,6 @@ public class Clientes implements IClientes {
         if (!coleccionClientes.contains(cliente)) {
             throw new TallerMecanicoExcepcion("No existe ningún cliente con ese DNI.");
         }
-
         if (telefono != null) {
             if (telefono.isBlank()) {
                 throw new TallerMecanicoExcepcion("El telefono no puede estar en blanco");
@@ -130,7 +137,6 @@ public class Clientes implements IClientes {
             }
         }
         return modificado;
-
     }
 
     @Override
