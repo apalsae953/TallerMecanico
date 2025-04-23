@@ -24,9 +24,9 @@ public class ModeloCascada implements Modelo {
 
     @Override
     public void comenzar() {
-        clientes = clientes.getInstancia();
-        vehiculos = vehiculos.getInstancia();
-        trabajos = trabajos.getInstancia();
+        clientes.comenzar();
+        vehiculos.comenzar();
+        trabajos.comenzar();
     }
 
     @Override

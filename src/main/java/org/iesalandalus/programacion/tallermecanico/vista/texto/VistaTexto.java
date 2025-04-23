@@ -6,6 +6,7 @@ import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -118,8 +119,8 @@ public class VistaTexto implements Vista {
     }
 
     @Override
-    public void mostrarCliente(Cliente cliente){
-        Consola.mostrarCabecera("Datos del cliente: " + cliente.toString());
+    public void mostrarCliente(Cliente cliente) {
+        System.out.println((cliente != null) ? cliente : "No existe ning鷑 cliente con dicho DNI.");
     }
 
     @Override
@@ -157,10 +158,15 @@ public class VistaTexto implements Vista {
     }
 
     @Override
-    public void mostrarTrabajos(List<Trabajo> trabajos){
-        Consola.mostrarCabecera("Listado de trabajos:");
-        for (Trabajo trabajo : trabajos) {
-            Consola.mostrarCabecera(trabajo.toString());
+    public void mostrarTrabajos(List<Trabajo> trabajos) {
+        if (!trabajos.isEmpty()) {
+            Comparator<Cliente> comparadorCliente = Comparator.comparing(Cliente::getNombre).thenComparing(Cliente::getDni);
+            trabajos.sort(Comparator.comparing(Trabajo::getFechaInicio).thenComparing(Trabajo::getCliente, comparadorCliente));
+            for (Trabajo trabajo : trabajos) {
+                System.out.println(trabajo);
+            }
+        } else {
+            System.out.println("No hay trabajos que mostrar.");
         }
     }
 

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Vehiculos implements IVehiculos {
 
     private List<Vehiculo> coleccionVehiculos;
-    private Vehiculos instancia;
+    private static Vehiculos instancia;
     private static final String FICHERO_VEHICULOS = String.format("%s%s%s", "ficheros", File.separator, "ficheroTexto.txt");
     private static final String RAIZ = "Vehículos";
     private static final String VEHICULO = "Vehículo";
@@ -30,7 +30,10 @@ public class Vehiculos implements IVehiculos {
         coleccionVehiculos = new ArrayList<>();
     }
 
-    public Vehiculos getInstancia(){
+    public static Vehiculos getInstancia(){
+        if (instancia == null) {
+            instancia = new Vehiculos();
+        }
         return instancia;
     }
 

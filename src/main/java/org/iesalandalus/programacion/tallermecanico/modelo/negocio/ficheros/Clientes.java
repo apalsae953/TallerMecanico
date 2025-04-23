@@ -22,13 +22,13 @@ public class Clientes implements IClientes {
     private static final String DNI = "DNI";
     private static final String TELEFONO = "Teléfono";
     public List<Cliente> coleccionClientes;
-    private Clientes instancia;
+    private static Clientes instancia;
 
     public Clientes() {
         coleccionClientes = new ArrayList<>();
     }
 
-    public Clientes getInstancia() {
+    public static Clientes getInstancia() {
         if (instancia == null) {
             instancia = new Clientes();
         }
@@ -57,6 +57,13 @@ public class Clientes implements IClientes {
         }
     }
 
+    private Cliente getCliente(Element elemento) {
+        String nombre = elemento.getAttribute(NOMBRE);
+        String dni = elemento.getAttribute(DNI);
+        String telefono = elemento.getAttribute(TELEFONO);
+        return new Cliente(nombre,dni,telefono);
+    }
+
     public void terminar() {
         Document documentoXml = crearDocumentoXml();
         UtilidadesXml.escribirDocumentoXml(documentoXml, FICHERO_CLIENTES);
@@ -81,13 +88,6 @@ public class Clientes implements IClientes {
         elemento.setAttribute(NOMBRE, cliente.getNombre());
         elemento.setAttribute(DNI, cliente.getDni());
         return elemento;
-    }
-
-    private Cliente getCliente(Element elemento) {
-        String nombre = elemento.getAttribute(NOMBRE);
-        String dni = elemento.getAttribute(DNI);
-        String telefono = elemento.getAttribute(TELEFONO);
-        return new Cliente(nombre,dni,telefono);
     }
 
     @Override
