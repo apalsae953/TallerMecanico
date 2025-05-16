@@ -7,26 +7,26 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-
 public class Consola {
 
     private static final String CADENA_FORMATO_FECHA ="dd/MM/yyyy";
 
     private Consola() {}
 
-    public static void mostrarCabecera(String mensaje) {
-        System.out.println(mensaje);
-        System.out.println("-".repeat(mensaje.length()));
+    static void mostrarCabecera(String mensaje) {
+        System.out.printf("%n%s%n", mensaje);
+        String formatoStr = "%0" + mensaje.length() + "d%n";
+        System.out.println(String.format(formatoStr, 0).replace("0", "-"));
     }
 
-    public static void mostrarMenu() {
-        mostrarCabecera("Menú de Opciones");
+    static void mostrarMenu() {
+        mostrarCabecera("Gestión de un taller mecánico.");
         for (Evento opcion : Evento.values()) {
-            System.out.println(opcion);
+            System.out.printf("%d.- %s%n", opcion.getCodigo(), opcion);
         }
     }
 
-    public static Evento elegirOpcion() {
+    static Evento elegirOpcion() {
         Evento opcion = null;
         do {
             try {
@@ -38,22 +38,22 @@ public class Consola {
         return opcion;
     }
 
-    public static int leerEntero(String mensaje) {
+    static int leerEntero(String mensaje) {
         System.out.print(mensaje);
         return Entrada.entero();
     }
 
-    public static float leerReal(String mensaje) {
+    static float leerReal(String mensaje) {
         System.out.print(mensaje);
         return Entrada.real();
     }
 
-    public static String leerCadena(String mensaje) {
+    static String leerCadena(String mensaje) {
         System.out.print(mensaje);
         return Entrada.cadena();
     }
 
-    public static LocalDate leerFecha(String mensaje) {
+    static LocalDate leerFecha(String mensaje) {
         LocalDate fecha;
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(CADENA_FORMATO_FECHA);
         mensaje = String.format("%s (%s): ", mensaje, CADENA_FORMATO_FECHA);

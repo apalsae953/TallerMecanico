@@ -8,5 +8,6 @@ public interface IControlador extends ReceptorEventos {
 
     void terminar();
 
+    @Override
     void actualizar(Evento evento);
 }

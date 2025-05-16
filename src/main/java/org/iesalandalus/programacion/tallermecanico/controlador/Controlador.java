@@ -1,25 +1,26 @@
 package org.iesalandalus.programacion.tallermecanico.controlador;
 
+import org.iesalandalus.programacion.tallermecanico.modelo.FabricaModelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
-import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
+import org.iesalandalus.programacion.tallermecanico.vista.FabricaVista;
 import org.iesalandalus.programacion.tallermecanico.vista.Vista;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 
-import javax.naming.OperationNotSupportedException;
+import java.util.Objects;
 
 public class Controlador implements IControlador {
 
-    private Modelo modelo;
-    private Vista vista;
+    private final Modelo modelo;
+    private final Vista vista;
 
-    public Controlador(Modelo modelo, Vista vista) {
-        if (modelo == null || vista == null) {
-            throw new NullPointerException("El modelo y la vista no pueden ser nulos.");
-        }
-        this.modelo = modelo;
-        this.vista = vista;
-        vista.getGestorEventos().suscribir(this, Evento.values());
+    public Controlador(FabricaModelo fabricaModelo, FabricaFuenteDatos fabricaFuenteDatos, FabricaVista fabricaVista) {
+        Objects.requireNonNull(fabricaModelo, "ERROR: La fábrica del modelo no puede ser nula.");
+        Objects.requireNonNull(fabricaFuenteDatos, "ERROR: La fábrica de la fuente de datos no puede ser nula.");
+        Objects.requireNonNull(fabricaVista, "ERROR: La fábrica de la vista no puede ser nula.");
+        this.modelo = fabricaModelo.crear(fabricaFuenteDatos);
+        this.vista = fabricaVista.crear();
+        this.vista.getGestorEventos().suscribir(this, Evento.values());
     }
 
     @Override
@@ -30,41 +31,43 @@ public class Controlador implements IControlador {
 
     @Override
     public void terminar() {
-        vista.terminar();
         modelo.terminar();
+        vista.terminar();
     }
 
     @Override
     public void actualizar(Evento evento) {
         try {
+            String resultado = "";
             switch (evento) {
-                case INSERTAR_CLIENTE -> modelo.insertar(vista.leerCliente());
-                case INSERTAR_VEHICULO -> modelo.insertar(vista.leerVehiculo());
-                case INSERTAR_REVISION -> modelo.insertar(vista.leerRevision());
-                case BUSCAR_CLIENTE -> vista.mostrarCliente(modelo.buscar(vista.leerCliente()));
-                case BUSCAR_VEHICULO -> vista.mostrarVehiculo(modelo.buscar(vista.leerVehiculo()));
-                case BUSCAR_REVISION -> vista.leerRevision(modelo.buscar(vista.leerRevision()));
-                case BORRAR_CLIENTE -> modelo.borrar(vista.leerCliente());
-                case BORRAR_VEHICULO -> modelo.borrar(vista.leerVehiculo());
-                case BORRAR_REVISION -> modelo.borrar(vista.leerRevision());
+                case INSERTAR_CLIENTE -> { modelo.insertar(vista.leerCliente()); resultado = "Cliente insertado correctamente."; }
+                case INSERTAR_VEHICULO -> { modelo.insertar(vista.leerVehiculo()); resultado = "Vehículo insertado correctamente"; }
+                case INSERTAR_REVISION -> { modelo.insertar(vista.leerRevision()); resultado = "Trabajo de revisión insertado correctamente."; }
+                case INSERTAR_MECANICO -> { modelo.insertar(vista.leerMecanico()); resultado = "Trabajo mecánico insertado correctamente."; }
+                case BUSCAR_CLIENTE -> vista.mostrarCliente(modelo.buscar(vista.leerClienteDni()));
+                case BUSCAR_VEHICULO -> vista.mostrarVehiculo(modelo.buscar(vista.leerVehiculoMatricula()));
+                case BUSCAR_TRABAJO -> vista.mostrarTrabajo(modelo.buscar(vista.leerRevision()));
+                case MODIFICAR_CLIENTE -> { modelo.modificar(vista.leerClienteDni(), vista.leerNuevoNombre(), vista.leerNuevoTelefono()); resultado = "Cliente modificado correctamente."; }
+                case ANADIR_HORAS_TRABAJO -> { modelo.anadirHoras(vista.leerTrabajoVehiculo(), vista.leerHoras()); resultado = "Horas añadidas correctamente."; }
+                case ANADIR_PRECIO_MATERIAL_TRABAJO -> { modelo.anadirPrecioMaterial(vista.leerTrabajoVehiculo(), vista.leerPrecioMaterial()); resultado = "Precio del material añadido correctamente."; }
+                case CERRAR_TRABAJO -> { modelo.cerrar(vista.leerTrabajoVehiculo(), vista.leerFechaCierre()); resultado = "Trabajo cerrado correctamente."; }
+                case BORRAR_CLIENTE -> { modelo.borrar(vista.leerClienteDni()); resultado = "Cliente eliminado correctamente."; }
+                case BORRAR_VEHICULO -> { modelo.borrar(vista.leerVehiculoMatricula()); resultado = "Vehículo eliminado correctamente."; }
+                case BORRAR_TRABAJO -> { modelo.borrar(vista.leerRevision()); resultado = "Trabajo eliminado correctamente."; }
                 case LISTAR_CLIENTES -> vista.mostrarClientes(modelo.getClientes());
                 case LISTAR_VEHICULOS -> vista.mostrarVehiculos(modelo.getVehiculos());
-                case LISTAR_REVISIONES -> vista.mostrarTrabajos(modelo.getTrabajos());
-                case LISTAR_REVISIONES_CLIENTE -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerCliente()));
-                case LISTAR_REVISIONES_VEHICULO -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerVehiculo()));
-                case ANADIR_HORAS_REVISION -> modelo.anadirHoras(vista.leerRevision(), vista.leerHoras());
-                case ANADIR_PRECIO_MATERIAL_REVISION -> modelo.anadirPrecioMaterial(vista.leerRevision(), vista.leerPrecioMaterial());
-                case MODIFICAR_CLIENTE -> {
-                    Cliente cliente = vista.leerCliente();
-                    String nombre = vista.leerNuevoNombre();
-                    String telefono = vista.leerNuevoTelefono();
-                    modelo.modificar(cliente, nombre, telefono);
-                }
-                case CERRAR_REVISION -> modelo.cerrar(vista.leerRevision(), vista.leerFechaCierre());
+                case LISTAR_TRABAJOS -> vista.mostrarTrabajos(modelo.getTrabajos());
+                case LISTAR_TRABAJOS_CLIENTE -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerClienteDni()));
+                case LISTAR_TRABAJOS_VEHICULO -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerVehiculoMatricula()));
+                case MOSTRAR_ESTADISTICAS_MENSUALES -> vista.mostrarEstadisticasMensuales(modelo.getEstadisticasMensuales(vista.leerMes()));
                 case SALIR -> terminar();
             }
-        } catch (OperationNotSupportedException | TallerMecanicoExcepcion e) {
-            throw new RuntimeException(e);
+            if (!resultado.isBlank()) {
+                vista.notificarResultado(evento, resultado, true);
+            }
+        } catch (Exception e) {
+            vista.notificarResultado(evento, e.getMessage(), false);
         }
     }
+
 }

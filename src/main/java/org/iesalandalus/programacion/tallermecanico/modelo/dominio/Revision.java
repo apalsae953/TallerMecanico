@@ -2,7 +2,6 @@ package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
 import java.time.LocalDate;
 
-
 public class Revision extends Trabajo {
 
     private static final float FACTOR_HORA = 35F;
@@ -17,9 +16,8 @@ public class Revision extends Trabajo {
 
     @Override
     public float getPrecioEspecifico() {
-        return FACTOR_HORA * getHoras();
+        return (estaCerrado()) ? FACTOR_HORA * getHoras() : 0;
     }
-
 
     @Override
     public String toString() {

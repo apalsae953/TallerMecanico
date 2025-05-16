@@ -3,51 +3,179 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.VentanaPrincipal">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichero">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Datos" />
+            <Menu mnemonicParsing="false" onAction="#acercaDe" text="Ayuda">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Acerca de..." />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="419.0">
          <children>
-            <Label text="Clientes">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" text="Buscar" />
-            <Button mnemonicParsing="false" text="Editar" />
-            <Button mnemonicParsing="false" text="Listar" />
+            <VBox alignment="CENTER" prefHeight="220.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" text="Clientes">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lupa.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="BuscarClientes" mnemonicParsing="false" onAction="#buscarCliente" text="Buscar" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lapiz.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="EditarClientes" mnemonicParsing="false" onAction="#editarCliente" text="Editar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lista.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="ListarClientes" mnemonicParsing="false" onAction="#listarCliente" text="Listar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Vehículos">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lupa.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="BuscarVehiculos" mnemonicParsing="false" text="Buscar" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lapiz.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="EditarVehiculos" mnemonicParsing="false" onAction="#editarVehiculo" text="Editar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lista.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="ListarVehiculos" mnemonicParsing="false" text="Listar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Trabajos">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lupa.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="BuscarTrabajoos" mnemonicParsing="false" text="Buscar" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lapiz.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="EditarTrabajos" mnemonicParsing="false" text="Editar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/lista.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="ListarTrabajos" mnemonicParsing="false" text="Listar">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <Label text="Trabajos">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" text="Buscar" />
-            <Button mnemonicParsing="false" text="Editar" />
-            <Button mnemonicParsing="false" text="Listar" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-         <children>
-            <Label text="Revisiones">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" text="Buscar" />
-            <Button mnemonicParsing="false" text="Editar" />
-            <Button mnemonicParsing="false" text="Lstar" />
-         </children>
-      </VBox>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
    </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-</HBox>
+</VBox>
