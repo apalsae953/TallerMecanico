@@ -2,10 +2,11 @@ package org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladore
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.VistaVentanas;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controlador;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controladores;
-
-import java.io.IOException;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Dialogos;
 
 public class VentanaPrincipal extends Controlador {
 
@@ -33,7 +34,10 @@ public class VentanaPrincipal extends Controlador {
     }
 
     public void cerrarVentana(ActionEvent actionEvent) {
-        getEscenario().close();
+        if (Dialogos.mostrarDialogoConfirmacion("Salir", "¿Seguro que quieres salir de la página?", getEscenario())) {
+            getEscenario().close();
+            VistaVentanas.getInstancia().getGestorEventos().notificar(Evento.SALIR);
+        }
     }
 
     @FXML

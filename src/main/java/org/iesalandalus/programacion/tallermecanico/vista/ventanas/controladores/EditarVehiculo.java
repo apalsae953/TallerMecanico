@@ -13,11 +13,6 @@ public class EditarVehiculo extends Controlador {
     }
 
     @FXML
-    void cerrarVentana(ActionEvent event) {
-        getEscenario().close();
-    }
-
-    @FXML
     void insertarVehiculo(ActionEvent event) {
         InsertarVehiculo insertarVehiculo = (InsertarVehiculo) Controladores.get("/vistas/InsertarVehiculo.fxml","Insertar Vehículo", getEscenario());
         insertarVehiculo.getEscenario().show();
