@@ -1,0 +1,168 @@
+Index: src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.iesalandalus.programacion.tallermecanico.vista.ventanas;\r\n\r\npublic class VistaVentanas {\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java b/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java
+--- a/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java	(revision aa8b7e486042e6ca637c6441d661192f03eb5f14)
++++ b/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/VistaVentanas.java	(date 1747219629519)
+@@ -1,4 +1,131 @@
+ package org.iesalandalus.programacion.tallermecanico.vista.ventanas;
+ 
+-public class VistaVentanas {
++import javafx.stage.Stage;
++import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
++import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
++import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
++import org.iesalandalus.programacion.tallermecanico.vista.Vista;
++import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
++import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
++
++import java.time.LocalDate;
++import java.util.List;
++
++public class VistaVentanas implements Vista {
++
++    private VistaVentanas(){}
++
++    public static Stage getInstancia() {
++        return
++    }
++
++    @Override
++    public GestorEventos getGestorEventos() {
++        return null;
++    }
++
++    @Override
++    public void comenzar() {
++
++    }
++
++    @Override
++    public void terminar() {
++
++    }
++
++    @Override
++    public Cliente leerCliente() {
++        return null;
++    }
++
++    @Override
++    public Cliente leerClienteDni() {
++        return null;
++    }
++
++    @Override
++    public String leerNuevoNombre() {
++        return "";
++    }
++
++    @Override
++    public String leerNuevoTelefono() {
++        return "";
++    }
++
++    @Override
++    public Vehiculo leerVehiculo() {
++        return null;
++    }
++
++    @Override
++    public Vehiculo leerVehiculoMatricula() {
++        return null;
++    }
++
++    @Override
++    public Trabajo leerRevision() {
++        return null;
++    }
++
++    @Override
++    public Trabajo leerMecanico() {
++        return null;
++    }
++
++    @Override
++    public int leerHoras() {
++        return 0;
++    }
++
++    @Override
++    public float leerPrecioMaterial() {
++        return 0;
++    }
++
++    @Override
++    public LocalDate leerFechaCierre() {
++        return null;
++    }
++
++    @Override
++    public void notificarResultado(Evento evento, String texto, boolean exito) {
++
++    }
++
++    @Override
++    public void mostrarCliente(Cliente cliente) {
++
++    }
++
++    @Override
++    public void mostrarVehiculo(Vehiculo vehiculo) {
++
++    }
++
++    @Override
++    public void leerRevision(Trabajo trabajo) {
++
++    }
++
++    @Override
++    public void mostrarClientes(List<Cliente> clientes) {
++
++    }
++
++    @Override
++    public void mostrarVehiculo(List<Vehiculo> vehiculos) {
++
++    }
++
++    @Override
++    public void mostrarVehiculos(List<Vehiculo> vehiculo) {
++
++    }
++
++    @Override
++    public void mostrarTrabajos(List<Trabajo> trabajos) {
++
++    }
+ }
+Index: src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadorVentanaPrincipal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.iesalandalus.programacion.tallermecanico.vista.ventanas;\r\n\r\nimport javafx.stage.Stage;\r\n\r\nimport static javafx.application.Application.launch;\r\n\r\npublic class LanzadorVentanaPrincipal extends Aplication{\r\n    @Override\r\n    public void start(Stage stage) {\r\n        VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) Controladores.get(\"/vistas/VentanaPrincipal.fxml\", \"Taller Mecánico\",null);\r\n        ventanaPrincipal.inicializar();\r\n        ventanaPrincipal.getEscenario().show;\r\n        ventnaPrincipal.centrar();\r\n    }\r\n\r\n    public static void comenzar(){launch();}\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadorVentanaPrincipal.java b/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadorVentanaPrincipal.java
+--- a/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadorVentanaPrincipal.java	(revision aa8b7e486042e6ca637c6441d661192f03eb5f14)
++++ b/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/ventanas/LanzadorVentanaPrincipal.java	(date 1747219629502)
+@@ -1,7 +1,8 @@
+ package org.iesalandalus.programacion.tallermecanico.vista.ventanas;
+ 
+ import javafx.stage.Stage;
+-
++import org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.VentanaPrincipal;
++import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controladores;
+ import static javafx.application.Application.launch;
+ 
+ public class LanzadorVentanaPrincipal extends Aplication{
+@@ -10,7 +11,7 @@
+         VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) Controladores.get("/vistas/VentanaPrincipal.fxml", "Taller Mecánico",null);
+         ventanaPrincipal.inicializar();
+         ventanaPrincipal.getEscenario().show;
+-        ventnaPrincipal.centrar();
++        ventanaPrincipal.centrar();
+     }
+ 
+     public static void comenzar(){launch();}
