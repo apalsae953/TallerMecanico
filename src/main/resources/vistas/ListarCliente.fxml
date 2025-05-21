@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.ListarCliente">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.ListarCliente">
    <children>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" />
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="178.0">
+         <children>
+            <Label text="Lista ">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvClientes" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="179.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/lupa.png" />
+         </image></ImageView>
    </children>
-</VBox>
+</HBox>

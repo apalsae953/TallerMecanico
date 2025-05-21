@@ -10,6 +10,7 @@ import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Di
 
 
 public class LanzadorVentanaPrincipal extends Application{
+
     @Override
     public void start(Stage stage) {
         VistaVentanas.getInstancia().inicializar();
