@@ -37,5 +37,5 @@ public class Controlador {
 	public void inicializar() {
 		escenario.show();
 	}
-	
+
 }

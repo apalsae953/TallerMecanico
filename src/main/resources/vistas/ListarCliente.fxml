@@ -8,21 +8,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.ListarCliente">
    <children>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="178.0">
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="177.0">
          <children>
-            <Label text="Lista ">
+            <Label text="Lista">
                <font>
-                  <Font size="26.0" />
+                  <Font size="32.0" />
                </font>
             </Label>
-            <ListView fx:id="lvClientes" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="lvClientes" prefHeight="200.0" prefWidth="128.0" />
          </children>
       </VBox>
-      <ImageView fitHeight="179.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagen" fitHeight="192.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/lupa.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
    </children>
 </HBox>
